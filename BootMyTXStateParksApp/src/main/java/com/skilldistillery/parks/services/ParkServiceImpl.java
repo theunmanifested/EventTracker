@@ -20,7 +20,7 @@ public class ParkServiceImpl implements ParkService {
 	@Override
 	public List<Park> allParks() {
 		// TODO Auto-generated method stub
-		return null;
+		return parkRepo.findAll();
 	}
 
 	@Override
