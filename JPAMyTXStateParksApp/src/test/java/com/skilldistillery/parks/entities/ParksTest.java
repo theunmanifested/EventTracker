@@ -16,7 +16,7 @@ class ParksTest {
 
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private Park park;
+	private ParkVisit parkVisit;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,19 +31,20 @@ class ParksTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		park = em.find(Park.class, 1);
+		parkVisit = em.find(ParkVisit.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		park = null;
+		parkVisit = null;
 	}
 
 	@Test
 	void test_park_entity_mapping() {
-		assertNotNull(park);
-		assertEquals("Longhorn Cavern State Park", park.getName());
+		assertNotNull(parkVisit);
+		assertEquals("Longhorn Cavern State Park", parkVisit.getParkName());
+		assertEquals("Burnet", parkVisit.getCounty());
 	}
 
 }

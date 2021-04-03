@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.parks.entities.Park;
+import com.skilldistillery.parks.entities.ParkVisit;
 import com.skilldistillery.parks.repositories.ParkRepository;
 
 @Service
@@ -18,13 +18,13 @@ public class ParkServiceImpl implements ParkService {
 	private ParkRepository parkRepo;
 	
 	@Override
-	public List<Park> allParks() {
+	public List<ParkVisit> allParks() {
 		// TODO Auto-generated method stub
 		return parkRepo.findAll();
 	}
 
 	@Override
-	public Park retrievePark(int parkId) {
+	public ParkVisit retrievePark(int parkId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

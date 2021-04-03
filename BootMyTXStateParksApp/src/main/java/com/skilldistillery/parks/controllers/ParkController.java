@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.parks.entities.Park;
+import com.skilldistillery.parks.entities.ParkVisit;
 import com.skilldistillery.parks.services.ParkService;
 
 @RequestMapping("api")
@@ -23,7 +23,7 @@ public class ParkController {
 	}
 	
 	@GetMapping("parks")
-	public List<Park> listParks(){
+	public List<ParkVisit> listParks(){
 		return parkSvc.allParks();
 	}
 }

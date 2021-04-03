@@ -2,12 +2,12 @@ package com.skilldistillery.parks.services;
 
 import java.util.List;
 
-import com.skilldistillery.parks.entities.Park;
+import com.skilldistillery.parks.entities.ParkVisit;
 
 public interface ParkService {
 
-	List<Park> allParks();
+	List<ParkVisit> allParks();
 	
-	Park retrievePark(int parkId);
+	ParkVisit retrievePark(int parkId);
 	
 }
