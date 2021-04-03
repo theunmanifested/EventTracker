@@ -45,6 +45,7 @@ class ParksTest {
 		assertNotNull(parkVisit);
 		assertEquals("Longhorn Cavern State Park", parkVisit.getParkName());
 		assertEquals("Burnet", parkVisit.getCounty());
+		assertEquals(5, parkVisit.getBestSeason());
 	}
 
 }

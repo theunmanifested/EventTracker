@@ -24,17 +24,18 @@ CREATE TABLE IF NOT EXISTS `park_visit` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `park_name` VARCHAR(100) NULL,
   `active` TINYINT NULL DEFAULT 1,
-  `length` TIME NULL,
-  `date` DATE NULL,
+  `length` INT NULL,
+  `date` VARCHAR(100) NULL,
   `main_activity` VARCHAR(100) NULL,
   `log_visit` TEXT NULL,
   `city` VARCHAR(45) NULL,
   `county` VARCHAR(45) NULL,
   `water_activity` TINYINT NULL,
   `first_time_visit` TINYINT NULL,
+  `best_season_num` INT NULL,
   `img_url` VARCHAR(1000) NULL,
-  `created_at` VARCHAR(45) NULL,
-  `last_updated` VARCHAR(45) NULL,
+  `created_at` VARCHAR(100) NULL,
+  `last_updated` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -54,7 +55,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `MyTXStateParksAppdb`;
-INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_activity`, `log_visit`, `city`, `county`, `water_activity`, `first_time_visit`, `img_url`, `created_at`, `last_updated`) VALUES (1, 'Longhorn Cavern State Park', 1, '2:00:00', '2019-07-08', 'Cavern Walking Tour', 'Cavern walking tour was amazing! Took the whole family spontaneously, and we loved the cave so much. There was a lot of underground geology wonders, history, and bats. ', 'Burnet', 'Burnet', 0, 1, 'https://tpwd.texas.gov/state-parks/longhorn-cavern/gallery/longhorn-caverns_1.jpg', '2020-11-11 21:50:50', NULL);
+INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_activity`, `log_visit`, `city`, `county`, `water_activity`, `first_time_visit`, `best_season_num`, `img_url`, `created_at`, `last_updated`) VALUES (1, 'Longhorn Cavern State Park', 1, 120, '2019-07-08', 'Cavern Walking Tour', 'Cavern walking tour was amazing! Took the whole family spontaneously, and we loved the cave so much. There was a lot of underground geology wonders, history, and bats. ', 'Burnet', 'Burnet', 0, 1, 5, 'https://tpwd.texas.gov/state-parks/longhorn-cavern/gallery/longhorn-caverns_1.jpg', '2020-11-30 23:59:59', '2020-12-14 23:59:59');
+INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_activity`, `log_visit`, `city`, `county`, `water_activity`, `first_time_visit`, `best_season_num`, `img_url`, `created_at`, `last_updated`) VALUES (2, 'McKinney Falls State Park', 1, 180, '2019-07-08', 'Water Falls', 'We took a wonderful stroll on the main trail which connects both the north and south falls.', 'Austin', 'Travis', 1, 1, 3, 'https://tpwd.texas.gov/state-parks/mckinney-falls/gallery/lower-mckinney-falls.jpg', '11/11/2020 9:50:50 PM', '11/11/2020 9:50:50 PM');
+INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_activity`, `log_visit`, `city`, `county`, `water_activity`, `first_time_visit`, `best_season_num`, `img_url`, `created_at`, `last_updated`) VALUES (3, 'Seminole Canyon State Park', 1, 90, '2018-08-08', 'Trails', 'It was very hot and we decided to take one of the longest trails but and it was okay.', 'Comstock', 'Val Verde', 0, 1, 2, 'https://tpwd.texas.gov/state-parks/seminole-canyon/gallery/seminole974_04.jpg', '11/21/2020 10:52:52 PM', '11/21/2020 10:52:52 PM');
 
 COMMIT;
 

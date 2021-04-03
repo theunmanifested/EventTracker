@@ -1,8 +1,6 @@
 package com.skilldistillery.parks.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,9 +22,9 @@ public class ParkVisit {
 	
 	private boolean active;
 	
-	private LocalTime length;
+	private Integer length;
 	
-	private LocalDate date;
+	private String date;
 	
 	@Column(name="main_activity")
 	private String mainActivity;
@@ -47,11 +45,14 @@ public class ParkVisit {
 	@Column(name= "img_url")
 	private String imageUrl;
 	
+	@Column(name="best_season_num")
+	private Integer bestSeason;
+	
 	@Column(name= "created_at")
-	private LocalDateTime createdAt;
+	private String createdAt;
 	
 	@Column(name= "last_updated")
-	private LocalDateTime lastUpdated;
+	private String lastUpdated;
 
 	// constructor(s)
 
@@ -60,6 +61,8 @@ public class ParkVisit {
 	// getters and setters
 	
 	
+	
+
 	public int getId() {
 		return id;
 	}
@@ -84,19 +87,19 @@ public class ParkVisit {
 		this.active = active;
 	}
 
-	public LocalTime getLength() {
+	public Integer getLength() {
 		return length;
 	}
 
-	public void setLength(LocalTime length) {
+	public void setLength(Integer length) {
 		this.length = length;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -154,21 +157,30 @@ public class ParkVisit {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}	
+	
+
+	public Integer getBestSeason() {
+		return bestSeason;
 	}
 
-	public LocalDateTime getCreatedAt() {
+	public void setBestSeason(Integer bestSeason) {
+		this.bestSeason = bestSeason;
+	}
+
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getLastUpdated() {
+	public String getLastUpdated() {
 		return lastUpdated;
 	}
 
-	public void setLastUpdated(LocalDateTime lastUpdated) {
+	public void setLastUpdated(String lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
 
