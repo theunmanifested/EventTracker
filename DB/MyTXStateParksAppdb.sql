@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `park_visit` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS parkEnthu@localhost;
+--DROP USER IF EXISTS parkEnthu@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'parkEnthu'@'localhost' IDENTIFIED BY 'parkEnthu';
 
@@ -60,4 +60,3 @@ INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_a
 INSERT INTO `park_visit` (`id`, `park_name`, `active`, `length`, `date`, `main_activity`, `log_visit`, `city`, `county`, `water_activity`, `first_time_visit`, `best_season_num`, `img_url`, `created_at`, `last_updated`) VALUES (3, 'Seminole Canyon State Park', 1, 90, '2018-08-08', 'Trails', 'It was very hot and we decided to take one of the longest trails but and it was okay.', 'Comstock', 'Val Verde', 0, 1, 2, 'https://tpwd.texas.gov/state-parks/seminole-canyon/gallery/seminole974_04.jpg', '11/21/2020 10:52:52 PM', '11/21/2020 10:52:52 PM');
 
 COMMIT;
-
