@@ -10,19 +10,75 @@
 </head>
 
 <body>
-    <h1>Hello and Welcome to My Texas State Parks App</h1>
 
-    <header id="header"></header>
+
+    <header id="header">
+        <h1>Hello and Welcome to My Texas State Parks App</h1>
+    </header>
 
     <main id="main">
+        <div id="displayPVbyId">
+            <form name="parkVisitsForm">
+                <input type="number" name="parkVId">
+                <button name="lookup">Find Your Park Visit by Id Number</button>
+            </form>
+        </div>
+        <br>
+        <div id="createNewPV">
+            <!-- <form name="newPVFormDisplay">
+                <button name="lookup">Let's Track Your New TX State Park Vist</button>
+            </form> -->
 
-        <!-- <form name="parkVisitsForm">
-            <input type="number" name="parkVId">
-            <button name="lookup">Get Park Visit by Id</button>
-          </form> -->
+            <hr>
+            <h3>Your New TX State Park Vist Info</h3>
+            <form name="newPVForm">
+                <label for="parkName">Park's Name</label>
+                <input type="text" name="parkName" placeholder="Name of the park"> <br>
+                <label for="logVisit">Log Visit</label> <br>
+                <textarea rows=4 cols="30" name="logVisit" placeholder="Log the details of your park visit"></textarea>
+                <br>
+                <label for="firstTimeVisit">First Time Visit</label>
+                <input type="checkbox" name="firstTimeVisit" value="true"> <br>
+                <label for="date">Date</label>
+                <input type="text" name="date" placeholder="Date of park visit"> <br>
+                <label for="length">Duration</label>
+                <input type="number" name="length" placeholder="number of minutes"> <br>
+                <label for="mainActivity">Main Activity</label>
+                <input type="text" name="mainActivity" placeholder="What was the main activity?"> <br>
+                <label for="waterActivity">Water Activities</label>
+                <input type="checkbox" name="waterActivity" value="true"> <br>
+                <label for="city">City</label>
+                <input type="text" name="city" placeholder="Name of City"> <br>
+                <label for="county">County</label>
+                <input type="text" name="county" placeholder="Name of County"> <br>
+
+                <label for="bestSeason">Best Season to Visit</label><br>
+                <input type="radio" name="bestSeason" value="1">
+                <label for="1">Spring</label><br>
+                <input type="radio" name="bestSeason" value="2">
+                <label for="2">Summer</label><br>
+                <input type="radio" name="bestSeason" value="3">
+                <label for="3">Fall</label><br>
+                <input type="radio" name="bestSeason" value="4">
+                <label for="4">Winter</label><br>
+
+                <label for="imageUrl">Photo's URL</label>
+                <input type="text" name="imageUrl" placeholder="link to your photo"> <br>
+
+                <input type="submit" name="submitBtn" value="Submit">
+                <input type="reset">
+            </form>
+
+            <hr>
+        </div>
+
         <div id="errors"></div>
-        <div id="parkVisitsDetails"></div>
-        <div id="parkVisitsTable"></div>
+        <div id="parkVisitsDetails">
+            <br>
+        </div>
+        <div id="parkVisitsTable">
+            <!-- <img src="" alt="image of a particular Texas state park"> -->
+        </div>
 
         <!-- <hr>
         <h3>Add a Park Visit</h3>
