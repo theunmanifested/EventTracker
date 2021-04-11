@@ -12,7 +12,7 @@ function init() {
             getPV(parkVId);
         }
     });
-    document.newPVForm.submitBtn.addEventListener('click', createPV);
+    document.newPVForm.submitBtn.addEventListener('click', createPV);   
 }
 
 function getPV(parkVId) {
@@ -127,7 +127,13 @@ function displayParkVisits(parkVisits) {
     dataDiv.appendChild(headerDisplayAll);
     // TODO: Make a beautiful table
     for (const parkVisit of parkVisits) {
-
+        // detailsViewBtn
+        // <input type="submit" name="detailsViewBtn" value="Submit">
+        // let dVElem = document.createElement('input');
+        // dVElem.type = 'submit';
+        // dVElem.name = 'detailsViewBtn';
+        // dVElem.value = 'View Details or Update';
+        // dataDiv.appendChild(dVElem);
         let pName = document.createElement('h2');
         pName.textContent = parkVisit.parkName;
         dataDiv.appendChild(pName);
