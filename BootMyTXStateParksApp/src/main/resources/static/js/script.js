@@ -12,7 +12,7 @@ function init() {
             getPV(parkVId);
         }
     });
-    document.newPVForm.submitBtn.addEventListener('click', createPV);   
+    document.newPVForm.submitBtn.addEventListener('click', createPV);
 }
 
 function getPV(parkVId) {
@@ -122,18 +122,39 @@ function displayAParkVisit(parkVisit) {
 function displayParkVisits(parkVisits) {
     let dataDiv = document.getElementById('parkVisitsTable');
     dataDiv.textContent = '';
+    dataDiv.className = 'allPVList';
     let headerDisplayAll = document.createElement('h4');
     headerDisplayAll.textContent = ("Here Are ALL of Your Tracked Park Visits");
     dataDiv.appendChild(headerDisplayAll);
     // TODO: Make a beautiful table
     for (const parkVisit of parkVisits) {
-        // detailsViewBtn
-        // <input type="submit" name="detailsViewBtn" value="Submit">
-        // let dVElem = document.createElement('input');
-        // dVElem.type = 'submit';
-        // dVElem.name = 'detailsViewBtn';
-        // dVElem.value = 'View Details or Update';
-        // dataDiv.appendChild(dVElem);
+        // let editForm = document.createElement('form');
+        // editForm.name = "viewEditDelDetails";
+        // dataDiv.appendChild(editForm);
+        let editBtn = document.createElement('button');
+        editBtn.name = 'editBtn';
+        editBtn.className ='btn btn-primary';
+        editBtn.textContent = 'View/Edit Details';
+        dataDiv.appendChild(editBtn);
+        let delBtn = document.createElement('button');
+        delBtn.name = 'delBtn';
+        delBtn.className ='btn btn-primary';
+        delBtn.textContent = 'Delete Park Visit';
+        dataDiv.appendChild(delBtn);
+        // document.viewEditDelDetails.editBtn.addEventListener('click', function (event) {
+        //     event.preventDefault();
+        //     displayAParkVisit(parkVisit.id);
+        //     div.textContent = '';
+        //   });
+        //         <a id="myLink" title="Click to do something"
+        //  href="#" onclick="MyFunction();return false;">link text</a>
+        // let aElem = document.createElement('a');
+        // aElem.innerText = parkVisit.parkName;
+        // aElem.href = "#";
+        // aElem.id = 'viewIdDetails';
+        // aElem.value = parkVisit.id;
+        // aElem.onclick = details(parkVisit.id);
+        // dataDiv.appendChild(aElem);
         let pName = document.createElement('h2');
         pName.textContent = parkVisit.parkName;
         dataDiv.appendChild(pName);
@@ -181,6 +202,8 @@ function displayParkVisits(parkVisits) {
         let pVImage = document.createElement('img');
         pVImage.src = parkVisit.imageUrl;
         dataDiv.appendChild(pVImage);
+        // document.dataDiv.editBtn.addEventListener('click', getPV(parkVisit.id));
+
     }
 }
 
@@ -224,3 +247,64 @@ function postPV(parkVisit) {
     xhr.send(JSON.stringify(parkVisit));
 }
 
+function details() {
+    console.log('TEST ! made it to details function');
+}
+
+
+
+function deletePV(parkVId){
+    let xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `api/parks/${id}`);  // must pass parkVId
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if(xhr.status === 200 || xhr.status === 204){
+                let parkVisits = JSON.parse(xhr.responseText);
+                console.log(parkVisit); // testing visual
+                displayParkVisits(parkVisit);
+            } else if(xhr.status === 404) {
+            } else {
+                displayError('Error! No Such ParkVisit')
+            }
+        }
+    }    
+    xhr.send();
+}
+
+
+function updatePV(parkVId){
+    let xhr = new XMLHttpRequest();
+    xhr.open('PUT', `api/parks/${id}`);  // must pass parkVId to update
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if(xhr.status === 200 || xhr.status === 204){
+                let parkVisits = JSON.parse(xhr.responseText);
+                console.log(parkVisit); // testing visual
+                displayParkVisits(parkVisit);
+            } else if(xhr.status === 404) {
+            } else {
+                displayError('Error! No Such ParkVisit')
+            }
+        }
+    }    
+    xhr.send();
+}
+
+// CRUD Data Aggregation. Will start with displaying number of PV posts and then elaborate from there
+function cRUDNumberOfPV(parkVId){
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `api/parks/${id}`);  // must pass parkVId to update
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if(xhr.status === 200 || xhr.status === 204){
+                let parkVisits = JSON.parse(xhr.responseText);
+                console.log(parkVisit); // testing visual
+                displayParkVisits(parkVisit);
+            } else if(xhr.status === 404) {
+            } else {
+                displayError('Error! No Such ParkVisit')
+            }
+        }
+    }    
+    xhr.send();
+}
