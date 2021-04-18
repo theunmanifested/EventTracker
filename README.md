@@ -1,4 +1,4 @@
-# EventTracker
+# EventTracker (Front-End w/ Angular frameworks)
 Keeping track of information on a specific topic of interest is a good example of a working and well-design web application. 
 **My Texas State Parks App** helps park enthusiasts to maintain a record of their visits with plenty of descriptive details and a comment or log about their experience. With the ability to search every single log, and to be able to display either just the selected or all of the logs, this web app can can display that information. Also, if a park enthusiast wants to either create, delete or just update information, they can certainly make those changes.
 
