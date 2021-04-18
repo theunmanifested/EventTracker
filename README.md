@@ -13,15 +13,9 @@ https://3.141.188.255:8080/BootMyTXStateParksApp
 ## REST API
 
 | HTTP Method | Resource URI | Request Body | Returns |
-|-------------|--------------|--------------|---------|
-| GET         | 'api/parks'  |              | List&lt;ParkVisit&gt;|
-|-------------|--------------|--------------|---------|
-| GET         | 'api/parks/{parkId}'  | All fields except for id, created and updated | ParkVisit showObject|
-|-------------|--------------|--------------|---------|
-| POST         | 'api/parks'  |              | ParkVisit newObject|
-|-------------|--------------|--------------|---------|
-| PUT         | 'api/parks/{parkId}'  |   All fields except for id and created | ParkVisit updatedObject|
-|-------------|--------------|--------------|---------|
-| DEL         | 'api/parks/{parkId}'  |              | boolean to assure deletion/destruction|
-|-------------|--------------|--------------|---------|
-
+| ---         | --- | --- | --- |
+| GET | 'api/parks' |  | List&lt;ParkVisit&gt; |
+| GET | 'api/parks/{parkId}' | All fields except for id, created and updated | ParkVisit showObject |
+| POST         | 'api/parks'  |              | ParkVisit newObject |
+| PUT         | 'api/parks/{parkId}'  |   All fields except for id and created | ParkVisit updatedObject |
+| DEL         | 'api/parks/{parkId}'  |              | boolean to assure deletion/destruction |
