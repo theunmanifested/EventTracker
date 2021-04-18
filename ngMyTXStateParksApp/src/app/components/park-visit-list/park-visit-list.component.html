@@ -1,6 +1,16 @@
 <h1>Texas State Parks Visits App</h1>
-<h4>Your Total Number of Park Visits So Far Is: {{getTodoCount()}}</h4>
-<!-- todo build table, detail view, edit/new forms -->
+<!-- <h4>Your Total Number of Park Visits So Far Is: {{getPVCount()}}</h4> -->
+
+<!-- New Park Visit -->
+<div *ngIf='!selected && !editPV'>
+  <hr>
+<h3>Visited a Park? Let's Track it!</h3>
+<button type="button" class="btn btn-success" (click)='setNewPV()'> New Park Visit </button>
+<hr>
+</div>
+
+
+
 <!-- Display all Park Visits table, possible leftovers:  *ngIf='!selected' -->
 <div *ngIf='!selected'>
 <table *ngIf='!selected' class="table table-striped table-hover" >
@@ -55,7 +65,46 @@
   <button class="btn btn-secondary" (click)='displayTable()'>Back</button>
 </div>
 
-<!-- New / Update Park Visit -->
+<!-- New Park Visit Enter Details   -->
+<div id="newParkV" *ngIf='!selected && !editPV && addNewPV'>
+  <ul style="list-style-type:none;">
+    <li>
+      Park Name: <input type="text" [(ngModel)]='newPV.parkName'>
+    </li> <br>
+    <li>
+      Date: <input type="text" [(ngModel)]='newPV.date'>
+    </li> <br>
+    <li>
+      Active Visit <input type="checkbox" [(ngModel)]='newPV.active'>
+    </li> <br>
+    <li>
+      Duration in mins: <input type="number" [(ngModel)]='newPV.length'>
+    </li> <br>
+    <li>
+      Main Activity: <input type="text" [(ngModel)]='newPV.mainActivity'>
+    </li> <br>
+    <li>
+      Park Visit Log: <textarea class="form-control" aria-label="Details of Park Visit" [(ngModel)]='editPV.logVisit' ></textarea>
+      <!-- <input type="text" [(ngModel)]='editPV.logVisit'> -->
+    </li> <br>
+    <li>
+      City: <input type="text" [(ngModel)]='newPV.city'>
+    </li> <br>
+    <li>
+      County: <input type="text" [(ngModel)]='newPV.county'>
+    </li> <br>
+    <li>
+      Water Activity: <input type="checkbox" [(ngModel)]='newPV.waterActivity'>
+    </li> <br>
+    <li>
+      First Time Visit: <input type="checkbox" [(ngModel)]='newPV.firstTimeVisit'>
+    </li> <br>
+  </ul>
+  <button type="button" class="btn btn-secondary" (click)='addPV(newPV) && addNewPV = null'>Save</button>
+  <button type="button" class="btn btn-secondary"(click)='addPV = null && addNewPV = null'>Cancel</button>
+</div>
+
+<!-- Update Park Visit -->
 <div *ngIf='editPV'>
   <ul style="list-style-type:none;">
     <li>

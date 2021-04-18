@@ -13,6 +13,8 @@ export class ParkVisitListComponent implements OnInit {
   newPV: ParkVisit = new ParkVisit();
   editPV: ParkVisit = null;
   selected = null;
+  addNewPV = null;
+
 
   constructor(
     private parkService: ParkVisitService
@@ -86,9 +88,13 @@ setEditPV() {
 
 }
 
-
-getPVCount(): number {
-  return this.incompletePipe.transform(this.parkVisits).length;
+setNewPV() {
+  this.addNewPV = true;
+  return document.getElementById('newParkV').scrollIntoView();
 }
+
+// getPVCount(): number {
+//   return this.incompletePipe.transform(this.parkVisits).length;
+// }
 
 }
