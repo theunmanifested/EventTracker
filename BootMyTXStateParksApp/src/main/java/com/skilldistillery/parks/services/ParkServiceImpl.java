@@ -21,6 +21,8 @@ public class ParkServiceImpl implements ParkService {
 	
 	@Override
 	public List<ParkVisit> allParks() {
+//		System.out.println("zzzzzzzzzzzzzzzzzzzparkVId ");
+
 		return parkRepo.findAll();
 	}
 
@@ -43,7 +45,7 @@ public class ParkServiceImpl implements ParkService {
 	public ParkVisit updatePVisit(ParkVisit pVisit, Integer parkVId) {
 		ParkVisit uPVisit = retrievePark(parkVId);
 		if (uPVisit != null) {
-			System.out.println("zzzzzzzzzzzzzzzzzzzparkVId " + parkVId);
+//			System.out.println("zzzzzzzzzzzzzzzzzzzparkVId " + parkVId);
 			uPVisit.setActive(true);
 			uPVisit.setParkName(pVisit.getParkName());
 			uPVisit.setLength(pVisit.getLength());

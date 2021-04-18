@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParkVisitService } from './services/park-visit.service';
 import { ParkVisitListComponent } from './components/park-visit-list/park-visit-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ParkVisitListComponent } from './components/park-visit-list/park-visit-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     ParkVisitService

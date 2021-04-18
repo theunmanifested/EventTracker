@@ -1,5 +1,95 @@
-<h1>TX State Parks!!!</h1>
-<!-- todo build table detail view edit/new forms -->
-<ul>
-  <li *ngFor="let parkVisit of parkVisits"> {{parkVisit.parkName}} </li>
-</ul>
+<h1>Texas State Parks Visits App</h1>
+<h4>Your Total Number of Park Visits So Far Is: {{getTodoCount()}}</h4>
+<!-- todo build table, detail view, edit/new forms -->
+<!-- Display all Park Visits table, possible leftovers:  *ngIf='!selected' -->
+<div *ngIf='!selected'>
+<table *ngIf='!selected' class="table table-striped table-hover" >
+  <!-- Overview of PV only-->
+  <thead class="thead thead-dark">
+    <th>Park Name</th>
+    <th>First Time Visiting</th>
+    <th>Main Activity</th>
+    <th>City</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let parkVisit of parkVisits">
+      <td (click)='displayPV(parkVisit)'>{{parkVisit.parkName}}</td>
+      <td>{{parkVisit.firstTimeVisit}}</td>
+      <td>{{parkVisit.mainActivity}}</td>
+      <td>{{parkVisit.city}}</td>
+      <td><button type="button" class="btn btn-danger" (click)='deletedPV(parkVisit.id)'>Del</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Details View -->
+<div *ngIf='selected && !editPV'>
+<table class="table table-hover">
+  <thead class="thead thead-light">
+    <th>Park Name</th>
+    <th>City</th>
+    <th>County</th>
+    <th>Date</th>
+    <th>Main Activity</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{selected.parkName}}</td>
+      <td>{{selected.city}}</td>
+      <td>{{selected.county}}</td>
+      <td>{{selected.date}}</td>
+      <td>{{selected.mainActivity}}</td>
+    </tr>
+  </tbody>
+</table>
+  <h5>Details:</h5>
+  <p>Duration of Park Visit: {{selected.length}}</p>
+  <p>Water Activity: {{selected.mainActivity}}</p>
+  <p>Park Visit's Log: {{selected.logVisit}}</p>
+  <p>Water Activity: {{selected.mainActivity}}</p>
+  <p>First Time Visit: {{selected.firstTimeVisit}}</p>
+  <p>Posted On: {{selected.createdAt}}</p>
+  <p>Last Update: {{selectedlastUpdated}}</p>
+  <button class="btn btn-secondary" (click)='setEditPV()'>Edit</button>
+  <button class="btn btn-secondary" (click)='displayTable()'>Back</button>
+</div>
+
+<!-- New / Update Park Visit -->
+<div *ngIf='editPV'>
+  <ul style="list-style-type:none;">
+    <li>
+      Park Name: <input type="text" [(ngModel)]='editPV.parkName'>
+    </li> <br>
+    <li>
+      Date: <input type="text" [(ngModel)]='editPV.date'>
+    </li> <br>
+    <li>
+      Active Visit <input type="checkbox" [(ngModel)]='editPV.active'>
+    </li> <br>
+    <li>
+      Duration in mins: <input type="number" [(ngModel)]='editPV.length'>
+    </li> <br>
+    <li>
+      Main Activity: <input type="text" [(ngModel)]='editPV.mainActivity'>
+    </li> <br>
+    <li>
+      Park Visit Log: <textarea class="form-control" aria-label="Details of Park Visit" [(ngModel)]='editPV.logVisit' ></textarea>
+      <!-- <input type="text" [(ngModel)]='editPV.logVisit'> -->
+    </li> <br>
+    <li>
+      City: <input type="text" [(ngModel)]='editPV.city'>
+    </li> <br>
+    <li>
+      County: <input type="text" [(ngModel)]='editPV.county'>
+    </li> <br>
+    <li>
+      Water Activity: <input type="checkbox" [(ngModel)]='editPV.waterActivity'>
+    </li> <br>
+    <li>
+      First Time Visit: <input type="checkbox" [(ngModel)]='editPV.firstTimeVisit'>
+    </li> <br>
+  </ul>
+  <button type="button" class="btn btn-secondary" (click)='updatePV(editPV)'>Save</button>
+  <button type="button" class="btn btn-secondary"(click)='editPV = null'>Cancel</button>
+</div>

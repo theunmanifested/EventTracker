@@ -10,7 +10,9 @@ import { ParkVisitService } from 'src/app/services/park-visit.service';
 export class ParkVisitListComponent implements OnInit {
 
   parkVisits: ParkVisit[] = [];
-
+  newPV: ParkVisit = new ParkVisit();
+  editPV: ParkVisit = null;
+  selected = null;
 
   constructor(
     private parkService: ParkVisitService
@@ -32,5 +34,61 @@ loadParkVisits(): void {
   );
 }
 
+displayPV(pV) {
+  this.selected  = pV;
+}
+
+addPV(): void {
+  console.log(this.newPV);
+  this.parkService.create(this.newPV).subscribe(
+    data => {
+      this.loadParkVisits();
+    },
+    err => {
+      console.log('Error creating todo: ' + err)
+    }
+  );
+  this.newPV = new ParkVisit();
+}
+
+updatePV(editedPV: ParkVisit, displayPV = true): void {
+  this.parkService.update(editedPV).subscribe(
+    data => {
+      if(displayPV) {
+        this.selected = editedPV;
+      }
+      this.editPV = null;
+      this.loadParkVisits();
+    },
+    err => {
+      console.log('Error updating todo: ' + err);
+    }
+  );
+}
+
+deletedPV(id: number): void {
+  this.parkService.destroy(id).subscribe(
+    data => {
+      this.loadParkVisits();
+},
+    err =>  {
+    console.error('Error: ' + err);
+    }
+  );
+}
+
+displayTable(): void {
+  this.selected = null;
+}
+
+setEditPV() {
+  this.editPV = Object.assign({}, this.selected);
+
+}
+
+
+getPVCount(): number {
+  return this.incompletePipe.transform(this.parkVisits).length;
+}
 
 }
